@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import { useEffect, useState } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { FlatList, SafeAreaView, StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
   const [todos, setTodos] = useState([]);
@@ -12,12 +12,16 @@ export default function App() {
   async function fetchData(){
     const response = await fetch("http://localhost:8080/todos/1");
     const data = await response.json();
-    setTodos(data);
+    setTodos(data); 
+    console.log(data)
+    
   }
 
   return (
     <View style={styles.container}>
-      <Text>{JSON.stringify(todos)}</Text>
+      <SafeAreaView>
+         <Text>hello</Text>       
+      </SafeAreaView>
       <StatusBar style="auto" />
     </View>
   );
