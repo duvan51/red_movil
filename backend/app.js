@@ -14,7 +14,7 @@ import {
 
 import cors from "cors";
 const corsOptions = {
-    origin: "http://127.0.0.1:5173" || "http://localhost:3000/", // especificar el origen unico al cual se va dejar conectar
+    origin: "http://192.168.0.7.19000/", // especificar el origen unico al cual se va dejar conectar
     methods : ["POST", "GET"],   // metodos que queremos que se manejen
     Credentials: true   // credenciales cookies, authentications
 };
