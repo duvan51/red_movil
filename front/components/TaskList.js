@@ -12,11 +12,11 @@ export default function Task({
 }){
     return
     (
-     <TouchableOpacity>
+     
         <View>
             <Text style={styles.text}>{title}</Text>
         </View>
-     </TouchableOpacity>
+     
     );
 }
 
@@ -28,9 +28,10 @@ const styles = StyleSheet.create({
     contentContainerStyle:{
       padding:25,
     },
-    title: {
+    text: {
       fontWeight:"800",
       fontSize: 28,
       marginBottom:15,
+      color:'red',
     }
   });
