@@ -1,21 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
-import React from 'react'
+import React from 'react';
+import axios from 'axios';
+import { useEffect } from 'react';
 
 function App() {
   
+//
   
-
-  const [data, setData] = React.useState(null)
-  React.useEffect(()=>{
-    console.log("hello")
-    obtenerDatos()
-  },[])
+    useEffect(()=>{
+      obtenerDatos() 
+    },[])
 
   const obtenerDatos = async () =>{
-    const data= await fetch('http://localhost:8080/users/2');
-    const tareas= await data.json()
-    console.log(tareas)
+    const data= await axios.get('http://localhost:8080/users/1');
+
+    console.log(data)
   }
   
   

@@ -1,29 +1,24 @@
 import { StatusBar } from 'expo-status-bar';
-import { useEffect, useState } from 'react';
-import { FlatList, SafeAreaView, StyleSheet, Text, View } from 'react-native';
+import { FlatList, SafeAreaView, StyleSheet, Text, View, Button } from 'react-native';
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import HomeScreen from './screens/HomeScreen';
+import TaskFormScreen from './screens/TaskFormScreen';
+
+
+const Stack = createStackNavigator();
 
 export default function App() {
-  const [todos, setTodos] = useState([]);
-  
-  useEffect(()=>{
-    fetchData();
-  }, []);
-  
-  async function fetchData(){
-    const response = await fetch("http://localhost:8080/todos/1");
-    const data = await response.json();
-    setTodos(data); 
-    console.log(data)
-    
-  }
 
   return (
-    <View style={styles.container}>
-      <SafeAreaView>
-         <Text>hello</Text>       
-      </SafeAreaView>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="HomeScreen" component={HomeScreen} />
+        <Stack.Screen name="TaskFormScreen" component={TaskFormScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 

@@ -54,3 +54,13 @@ VALUES
   FROM todos
   LEFT JOIN shared_todos ON todos.id = shared_todos.todo_id
   WHERE todos.user_id = [user_id] OR shared_todos.shared_with_id = 2;
+
+
+
+
+  =QUERY(
+   {IMPORTRANGE("1BuFoqF4us9DANjtJsblGsJb6lKoSeSrZ/edit#gid=865762214","Copia de Data !A2:AA"); 
+    IMPORTRANGE("1kTjibbl_cwKsUMJfJPSupwxiaPl-iAeYctSIPGRqq3Y/edit#gid=1726330234","Copia de Data !A2:AA"); 
+   },
+   "SELECT * where"
+   )

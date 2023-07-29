@@ -23,7 +23,14 @@ export async function getTodo(id){
    //console.log(row[0]);
     
 }
-    //getTodo(1)
+export async function getUsers(){
+    const [row] = await pool.query(
+       `SELECT * FROM users`,
+       
+    );
+    return row;
+}
+
 
 export async function getTodosByID(id){
     const [row] = await pool.query(

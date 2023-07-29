@@ -9,14 +9,15 @@ import {
     toggleCompleted,
     getUserByEmail,
     getUserbyId,
-    getSharedTodoById
+    getSharedTodoById,
+    getUsers
 } from "./database.js";
 
 import cors from "cors";
 const corsOptions = {
-    origin: "http://127.0.0.1:5173" || "http://localhost:3000/", // especificar el origen unico al cual se va dejar conectar
+    origin: "*", // especificar el origen unico al cual se va dejar conectar
     methods : ["POST", "GET"],   // metodos que queremos que se manejen
-    Credentials: true   // credenciales cookies, authentications
+    Credentials: false   // credenciales cookies, authentications
 };
 
 
@@ -27,6 +28,11 @@ app.use(cors(corsOptions));
 //------------//get users-------
 app.get("/users/:id", async (req, res)=>{
     const user = await  getUserbyId(req.params.id);
+    res.status(200).send(user);
+    
+})
+app.get("/users", async (req, res)=>{
+    const user = await  getUsers(req.params.id);
     res.status(200).send(user);
     
 })
@@ -83,6 +89,6 @@ app.post("/todos", async (req, res)=>{
 
 
 
-app.listen(8080, ()=>{
-    console.log("server runing on port 8080")
+app.listen(8081, ()=>{
+    console.log("server runing on port 8081")
 });
