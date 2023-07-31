@@ -3,6 +3,7 @@ import React, {useEffect, useState} from 'react'
 
 import {getTask} from '../api';
 import TaskList from '../components/TaskList';
+import Layout from '../components/Layout';
 
 const HomeScreen=()=> {
  const [users, setUsers] = useState([])
@@ -16,11 +17,12 @@ const HomeScreen=()=> {
   useEffect(()=>{
     loadTask()
   },[])
+  console.log(users)
   
   return (
-    <View>
+    <Layout>
       <TaskList users={users} />
-    </View>
+    </Layout>
   )
 }
 export default HomeScreen;
