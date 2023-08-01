@@ -17,7 +17,7 @@ const HomeScreen=()=> {
   useEffect(()=>{
     loadTask()
   },[])
-  console.log(users)
+  
   
   return (
     <Layout>

@@ -3,6 +3,18 @@ const urlUsers= "http://192.168.0.28:8081/users"
 
 
 export const getTask = async()=>{
-    const res= await fetch('http://192.168.0.28:8081/users')
+    const res= await fetch(urlUsers)
+    return await res.json()
+}
+
+
+
+export const createUser = async(createUser)=>{
+    const res= await fetch
+        (urlUsers,
+          {method: 'POST', 
+          headers: {Accept:"application/json", "Content-Type": "application/json"},
+          body: JSON.stringify(createUser)
+        })
     return await res.json()
 }

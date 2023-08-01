@@ -79,6 +79,21 @@ export async function CreateTodo(user_id, title){
     return getTodo(todoID); 
 }
 
+/*    ---- create users----- */
+export async function CreateUsers( name, email, password){
+    const [result] = await pool.query(
+       `INSERT INTO users (name, email, password)
+        VALUES(?,?,?)
+       `,
+       [name, email, password]
+    );
+    const todoID = result.insertId;
+    return getUsers(todoID); 
+}
+
+
+
+
 
 export async function DeleteTodo(id){
     const [result] = await pool.query(

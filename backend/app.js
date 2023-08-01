@@ -10,7 +10,8 @@ import {
     getUserByEmail,
     getUserbyId,
     getSharedTodoById,
-    getUsers
+    getUsers,
+    CreateUsers
 } from "./database.js";
 
 import cors from "cors";
@@ -64,6 +65,8 @@ app.delete("/todos/:id", async (req, res)=>{
 })
 
 
+
+//-----crear ---//
 app.post("/todos/:id", async (req, res)=>{
     const {todo_id, user_id, email} = req.body;
     const userToshare = await getUserByEmail(email);
@@ -75,6 +78,12 @@ app.post("/todos", async (req, res)=>{
     const {user_id, title} = req.body;
     const todo = await CreateTodo(user_id, title);
     res.status(201).send(todo);   
+})
+app.post("/users", async (req, res)=>{
+    const {name, email, password} = req.body;
+    const user = await CreateUsers(name, email, password);
+    res.status(201).send(user);
+    
 })
 
 
