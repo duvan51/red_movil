@@ -11,7 +11,8 @@ import {
     getUserbyId,
     getSharedTodoById,
     getUsers,
-    CreateUsers
+    CreateUsers,
+    DeleteUsers
 } from "./database.js";
 
 import cors from "cors";
@@ -61,7 +62,11 @@ app.put("/todos/:id", async (req, res)=>{
 
 app.delete("/todos/:id", async (req, res)=>{
     await DeleteTodo(req.params.id);
-    res.status.send({ message: "borrado exitoso" });    
+    res.status(200).send({ message: "borrado exitoso" });    
+})
+app.delete("/users/:id", async (req, res)=>{
+    await DeleteUsers(req.params.id);
+    res.status(200).send({ message: "borrado exitoso" });    
 })
 
 

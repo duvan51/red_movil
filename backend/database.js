@@ -102,6 +102,14 @@ export async function DeleteTodo(id){
     );
     return result; 
 }
+export async function DeleteUsers(id){
+    const [result] = await pool.query(
+       `DELETE FROM users WHERE id = ?`,
+       [id]
+    );
+    return result; 
+}
+
 
 export async function toggleCompleted(id, value){
     const newValue = value === true ? "TRUE" : "FALSE";

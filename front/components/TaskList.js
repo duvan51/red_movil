@@ -1,13 +1,39 @@
-import React, { Component } from 'react';
-import { Text, View, FlatList } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { FlatList, RefreshControl } from 'react-native';
 import TaskItem from './TaskItem';
+import {deleteTask, getTask} from '../api'
 
-const TaskList = ({ users }) => {
+const TaskList = () => {
 
-    
-    const renderItem=({ item }) => {
-        return (<TaskItem task={item} />)
+    const [users, setUsers] = useState([])
+    const [refreshing, setRefresing] = useState(false)
+
+
+    const loadTask = async()=>{
+      const data = await getTask()
+      setUsers(data)
     }
+    
+    useEffect(()=>{
+      loadTask()
+    },[])
+    
+
+    const handleDelete = async (id)=>{
+        await deleteTask(id)
+        await loadTask()
+    }
+
+    const renderItem=({ item }) => {
+        return (<TaskItem task={item} handleDelete={handleDelete} />)
+    }
+
+
+    const onRefresh = React.useCallback(async ()=>{
+        setRefresing(true);
+        await loadTask()
+        setRefresing(false);
+    })
 
     return (
         <>
@@ -16,6 +42,13 @@ const TaskList = ({ users }) => {
                 data={users}
                 keyExtractor={(item) => item.id + " "}
                 renderItem={renderItem}
+                refreshControl={
+                    <RefreshControl 
+                        refreshing={refreshing}
+                       onRefresh={()=> console.log(onRefresh)}
+                    
+                    />
+                }
             />
         </>
     );

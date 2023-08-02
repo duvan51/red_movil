@@ -18,3 +18,11 @@ export const createUser = async(createUser)=>{
         })
     return await res.json()
 }
+
+
+export const deleteTask = async(id)=>{
+    await fetch(`${urlUsers}/${id}`, {
+        method: "DELETE"
+    })  
+}
+

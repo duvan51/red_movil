@@ -54,14 +54,14 @@ const TaskFormScreen = () => {
 const styles = StyleSheet.create({
   input:{
     width:"90%",
-    height:"30px",
-    padding:"10px",
+    height:40,
+    padding:10,
     backgroundColor:"white",
-    marginTop:"10px",
+    marginTop:10,
     borderColor:"black",
     borderWidth:1,
     borderRadius:3,
-    fontSize:14
+    fontSize:16
   },
   ButtonSave:{
     paddingTop:10,

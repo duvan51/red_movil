@@ -1,27 +1,14 @@
 import { StyleSheet, Text, View } from 'react-native'
-import React, {useEffect, useState} from 'react'
-
-import {getTask} from '../api';
+import React from 'react'
 import TaskList from '../components/TaskList';
 import Layout from '../components/Layout';
 
 const HomeScreen=()=> {
- const [users, setUsers] = useState([])
 
-
-  const loadTask = async()=>{
-    const data = await getTask()
-    setUsers(data)
-  }
-  
-  useEffect(()=>{
-    loadTask()
-  },[])
-  
   
   return (
     <Layout>
-      <TaskList users={users} />
+      <TaskList  />
     </Layout>
   )
 }
