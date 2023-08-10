@@ -1,20 +1,27 @@
 import { View, Text, StyleSheet, Touchable, TouchableOpacity } from 'react-native'
 import React from 'react'
+import {useNavigation} from '@react-navigation/native'
+
+
 
 const TaskItem = ({task, handleDelete}) => {
+
+  const navigation = useNavigation();
+
+
   return (
     <View style={styles.itemContainer}>
-      <View style={styles.text}>
+      <TouchableOpacity style={styles.text} onPress={() => navigation.navigate('TaskFormScreen')}>
         <Text style={styles.itemTitle}>{task.name}</Text>
         <Text style={styles.itemTitle}>{task.email}</Text>
-      </View>
+      </TouchableOpacity>
       <View style={styles.Btns}>
         <TouchableOpacity style={styles.btnT}
         onPress={()=> handleDelete(task.id)}
         >
           <Text>Delete</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.btnT} >
+        <TouchableOpacity style={styles.btnT} onPress={() => navigation.goBack('TaskFormScreen')}>
           <Text>Edit</Text>
         </TouchableOpacity>
       </View>

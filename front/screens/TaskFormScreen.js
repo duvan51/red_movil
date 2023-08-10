@@ -4,7 +4,7 @@ import Layout from '../components/Layout'
 
 import { createUser } from "../api"
 
-const TaskFormScreen = () => {
+const TaskFormScreen = ({ navigation }) => {
   
   const [user, setUser] = useState({
     name:"",
