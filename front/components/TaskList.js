@@ -45,7 +45,8 @@ const TaskList = () => {
                 refreshControl={
                     <RefreshControl 
                         refreshing={refreshing}
-                       onRefresh={()=> console.log(onRefresh)}
+                        colors={["black"]}
+                        onRefresh={onRefresh}
                     
                     />
                 }

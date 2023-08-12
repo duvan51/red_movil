@@ -6,7 +6,10 @@ export const getTask = async()=>{
     const res= await fetch(urlUsers)
     return await res.json()
 }
-
+export const getTasks = async(id)=>{
+    const res = await fetch (`${urlUsers}/${id}`);
+    return await res.json();
+}
 
 
 export const createUser = async(createUser)=>{

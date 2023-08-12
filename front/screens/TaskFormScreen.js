@@ -1,22 +1,37 @@
 import { View, Text, TextInput, StyleSheet, TouchableOpacity, onChangeText } from 'react-native'
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Layout from '../components/Layout'
 
-import { createUser } from "../api"
+import { createUser, getTasks } from "../api"
 
-const TaskFormScreen = ({ navigation }) => {
+const TaskFormScreen = ({route}) => {
   
   const [user, setUser] = useState({
     name:"",
     email:"",
     password:""
   })
+
+  
   
   const handleChange = (name, value)=> setUser({...user, [name]:value});
   
   const handleSubmit = ()=>{
     createUser(user)
   }
+ 
+ 
+  useEffect(()=>{
+    if(route.params && route.params.id){
+      navigation.setOptions({headerTitle: " actualizando un usuario"});
+
+     (async()=>{
+     const userEdit=  await getTasks(route.params.id)
+     console.log(userEdit)
+     })();
+    }
+
+  },[])
 
 
   return (

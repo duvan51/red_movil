@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import { FlatList, SafeAreaView, StyleSheet, Text, View, Button, TouchableOpacity } from 'react-native';
 
 import { NavigationContainer } from '@react-navigation/native';
@@ -16,19 +15,22 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen 
-          name="Usuarios" 
+          name="Home-Screen" 
           component={HomeScreen}
           options={({navigation})=>({
             headerRight:()=> 
               (
-                <TouchableOpacity onPress={()=> navigation.navigate('Crear usuario')}>
+                <TouchableOpacity onPress={()=> navigation.navigate('Home-Screen')}>
                     <Text> ADD </Text>
                 </TouchableOpacity>
               
               )
           })} 
         />
-        <Stack.Screen name="Crear usuario" component={TaskFormScreen} />
+        <Stack.Screen 
+          name="TaskFormScreen" 
+          component={TaskFormScreen} 
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
