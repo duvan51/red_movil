@@ -4,7 +4,7 @@ import Layout from '../components/Layout'
 
 import { createUser, getTasks } from "../api"
 
-const TaskFormScreen = ({route}) => {
+const TaskFormScreen = ({route, navigation}) => {
   
   const [user, setUser] = useState({
     name:"",
@@ -17,21 +17,29 @@ const TaskFormScreen = ({route}) => {
   const handleChange = (name, value)=> setUser({...user, [name]:value});
   
   const handleSubmit = ()=>{
-    createUser(user)
+    setUser(user)
+    navigation.navigate('users')
   }
  
  
   useEffect(()=>{
-    if(route.params && route.params.id){
-      navigation.setOptions({headerTitle: " actualizando un usuario"});
+    if (route.params && route.params.id) {
+      navigation.setOptions({headerTitle: `Editar usuario ${route.params.id}`
+      
+      // Aquí puedes agregar más opciones de navegación según tus necesidades
+      });
+      (async()=>{
+        const user = await getTasks(route.params.id)});
+        console.log(user)
+        setUser({
+          email: user.email,
+          name: user.name,
+          password: user.password
+        })
+      }
+     
 
-     (async()=>{
-     const userEdit=  await getTasks(route.params.id)
-     console.log(userEdit)
-     })();
-    }
-
-  },[])
+  },[]);
 
 
   return (
@@ -41,18 +49,21 @@ const TaskFormScreen = ({route}) => {
       placeholder='name'
       placeholderTextColor="gray"
       onChangeText={(text)=>handleChange("name",text)}
+      value={user.name}
       />
       <TextInput
       style={styles.input} 
       placeholder='email'
       placeholderTextColor="gray"
       onChangeText={(text)=>handleChange("email",text)}
+      value={user.email}
       />
       <TextInput 
       style={styles.input}
       placeholder='password'
       placeholderTextColor="gray"
       onChangeText={(text)=>handleChange("password",text)}
+      value={user.password}
       />
       <TouchableOpacity
       style={styles.ButtonSave}

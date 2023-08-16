@@ -1,10 +1,13 @@
-const urlUsers= "http://192.168.0.28:8081/users"
+//const urlUsers= "http://192.168.0.28:8081/users"  //este es para trabajo
+const urlUsers= "http://192.168.100.7:8081/users"  //este es para casa
 
 
 
 export const getTask = async()=>{
     const res= await fetch(urlUsers)
     return await res.json()
+   
+    
 }
 export const getTasks = async(id)=>{
     const res = await fetch (`${urlUsers}/${id}`);

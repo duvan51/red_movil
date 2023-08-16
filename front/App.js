@@ -3,6 +3,7 @@ import { FlatList, SafeAreaView, StyleSheet, Text, View, Button, TouchableOpacit
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 
+
 import HomeScreen from './screens/HomeScreen';
 import TaskFormScreen from './screens/TaskFormScreen';
 
@@ -11,16 +12,18 @@ const Stack = createStackNavigator();
 
 export default function App() {
 
+  
   return (
     <NavigationContainer>
       <Stack.Navigator>
+      
         <Stack.Screen 
-          name="Home-Screen" 
+          name="users" 
           component={HomeScreen}
           options={({navigation})=>({
             headerRight:()=> 
               (
-                <TouchableOpacity onPress={()=> navigation.navigate('Home-Screen')}>
+                <TouchableOpacity onPress={()=>navigation.navigate('TaskFormScreen')}>
                     <Text> ADD </Text>
                 </TouchableOpacity>
               
@@ -31,6 +34,7 @@ export default function App() {
           name="TaskFormScreen" 
           component={TaskFormScreen} 
         />
+        
       </Stack.Navigator>
     </NavigationContainer>
   );

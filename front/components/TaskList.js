@@ -11,9 +11,9 @@ const TaskList = () => {
 
     const loadTask = async()=>{
       const data = await getTask()
-      setUsers(data)
-    }
-    
+      setUsers(data) 
+    }    
+
     useEffect(()=>{
       loadTask()
     },[])
