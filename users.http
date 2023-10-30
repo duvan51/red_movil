@@ -1,0 +1,17 @@
+@apiUsers = http://localhost:8081/users 
+GET {{apiUsers}}
+###
+
+GET {{apiUsers}}/1
+
+
+###
+
+PUT {{apiUsers}}/1
+Content-Type: application/json
+
+{
+  "name": "duvuju",
+  "email": "duvuju@gmail.com",
+  "password": "duvuju123"
+}

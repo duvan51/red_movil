@@ -1,5 +1,5 @@
-//const urlUsers= "http://192.168.0.28:8081/users"  //este es para trabajo
-const urlUsers= "http://192.168.100.7:8081/users"  //este es para casa
+const urlUsers= "http://192.168.0.28:8081/users"  //este es para trabajo
+//const urlUsers= "http://192.168.100.7:8081/users"  //este es para casa
 
 
 
